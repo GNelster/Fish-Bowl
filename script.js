@@ -20,3 +20,31 @@ function swim() {
 // Start facing right so first movement looks correct
 fish.style.transform = "scaleX(-1)";
 swim();
+
+// Start facing right so first movement looks correct
+fish.style.transform = "scaleX(-1)";
+swim();
+
+function spawnBubble() {
+  const bubble = document.createElement("div");
+  bubble.classList.add("bubble");
+  document.body.appendChild(bubble);
+
+  bubble.style.left = Math.random() * window.innerWidth + "px";
+  bubble.style.bottom = "0px";
+
+  let rise = 0;
+  function floatUp() {
+    rise += 2;
+    bubble.style.bottom = rise + "px";
+    if (rise < window.innerHeight) {
+      requestAnimationFrame(floatUp);
+    } else {
+      bubble.remove();
+    }
+  }
+  floatUp();
+}
+
+// spawn bubble every 2s
+setInterval(spawnBubble, 2000);
